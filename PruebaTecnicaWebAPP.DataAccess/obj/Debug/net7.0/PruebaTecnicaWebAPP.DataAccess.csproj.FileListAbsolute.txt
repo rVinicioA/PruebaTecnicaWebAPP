@@ -1,0 +1,17 @@
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\bin\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.deps.json
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\bin\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.dll
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\bin\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.pdb
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\bin\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.dll
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\bin\Debug\net7.0\PruebaTecnicaWebAPP.Models.dll
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\bin\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.pdb
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\bin\Debug\net7.0\PruebaTecnicaWebAPP.Models.pdb
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.csproj.AssemblyReference.cache
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.AssemblyInfoInputs.cache
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.AssemblyInfo.cs
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.csproj.CopyComplete
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.dll
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\refint\PruebaTecnicaWebAPP.DataAccess.dll
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\PruebaTecnicaWebAPP.DataAccess.pdb
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.DataAccess\obj\Debug\net7.0\ref\PruebaTecnicaWebAPP.DataAccess.dll

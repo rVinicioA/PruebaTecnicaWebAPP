@@ -1,0 +1,15 @@
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\bin\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.deps.json
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\bin\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.dll
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\bin\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.pdb
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\bin\Debug\net7.0\PruebaTecnicaWebAPP.Models.dll
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\bin\Debug\net7.0\PruebaTecnicaWebAPP.Models.pdb
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.csproj.AssemblyReference.cache
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.AssemblyInfoInputs.cache
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.AssemblyInfo.cs
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.csproj.CopyComplete
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.dll
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\refint\PruebaTecnicaWebAPP.Interfaces.dll
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\PruebaTecnicaWebAPP.Interfaces.pdb
+C:\Users\vinic\source\repos\PruebaTecnicaWebAPP\PruebaTecnicaWebAPP.Interfaces\obj\Debug\net7.0\ref\PruebaTecnicaWebAPP.Interfaces.dll

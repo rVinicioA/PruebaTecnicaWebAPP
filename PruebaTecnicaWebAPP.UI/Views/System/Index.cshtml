@@ -1,0 +1,549 @@
+﻿
+@model List<PruebaTecnicaWebAPP.Models.TodoTask>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string botonPresionado = "MostrarTodo";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/TodoTask/datatables/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/TodoTask/datatables/extensiones/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="~/TodoTask/datatables/extensiones/css/buttons.dataTables.min.css">
+}
+
+<div class="container-fluid">
+    <!-- Logica para filtraR listas por estado -->
+    @{
+        string DatoListado = "";
+      
+    }
+    <!-- DataTales -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-second-primary">
+            <h6 class="m-0 font-weight-bold text-white text-center ">LISTADO DE TAREAS</h6>
+        </div>
+        <div class="card-body">
+            <div class="row mb-2">
+                <div class="col-sm-3">
+                    <button class="btn btn-success" data-toggle="modal" data-target="#modalData"><i class="fas fa-plus-circle"></i> Nueva Tarea </button>
+                </div>
+            </div>
+          
+
+            <form method="post" class="mb-4">
+                <div class="d-flex flex-row-reverse">
+                    <div class="col-sm-2">
+                        <button class="btn btn-info" name="boton" id="MostrarTodo" value="MostrarTodo">
+                            <i class="fa-sharp fa-light fa-check-double"></i> Mostrar Todo
+                        </button>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-secondary" name="boton" value="Pendientes">
+                            <i class="fa-sharp fa-light fa-xmark"></i> Pendientes
+                        </button>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-secondary" name="boton" value="Realizadas">
+                            <i class="fa-sharp fa-light fa-check"></i> Realizadas
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+            @if (Context.Request.Method == "POST")
+            {
+                botonPresionado = Context.Request.Form["boton"];
+
+                if (botonPresionado == "MostrarTodo")
+                {
+                    DatoListado = " Se esta mostrando un listado de todas las actividades";
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered" id="tbdata" cellspacing="0" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Descripcion</th>
+                                        <th>Fecha de Creacion</th>
+                                        <th>Fecha de Finalizacion</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.CreationDate.ToShortDateString()</td>
+                                            <td>@item.CompletedDate?.ToShortDateString()</td>
+                                            <td>
+                                                @if (item.State == 1)
+                                                {
+                                                    <text>Completada</text>
+                                                }
+                                                else
+                                                {
+                                                    <text>Pendiente</text>
+                                                }
+                                            </td>
+
+                                            <td>
+                                                <button class="btn btn-success btn-sm" onclick="onCheck('@item.Id', '@item.Name','@item.Description','@item.CreationDate')">
+                                                    <i class="fa-sharp fa-light fa-circle-check fa-lg"></i>
+                                                </button>
+
+                                                <button class="btn btn-primary btn-sm " onclick="GetById(@item.Id)">
+                                                    <i class="fas fa-pencil-alt"> </i>
+                                                </button>
+                                                <button class="btn btn-danger btn-sm" onclick="onDelete(@item.Id)">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                }
+                else if (botonPresionado == "Pendientes")
+                {
+                    DatoListado = " Se estan mostrando unicamente las actividades pendientes";
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered" id="tbdata" cellspacing="0" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Descripcion</th>
+                                        <th>Fecha de Creacion</th>
+                                        <th>Fecha de Finalizacion</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Where(item => item.State == 0))
+                                    {
+
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.CreationDate.ToShortDateString()</td>
+                                            <td>@item.CompletedDate?.ToShortDateString()</td>
+                                            <td>
+                                                @if (item.State == 1)
+                                                {
+                                                    <text>Completada</text>
+                                                }
+                                                else
+                                                {
+                                                    <text>Pendiente</text>
+                                                }
+                                            </td>
+
+                                            <td>
+                                                <button class="btn btn-success btn-sm" onclick="onCheck('@item.Id', '@item.Name','@item.Description','@item.CreationDate')">
+                                                    <i class="fa-sharp fa-light fa-circle-check fa-lg"></i>
+                                                </button>
+
+                                                <button class="btn btn-primary btn-sm " onclick="GetById(@item.Id)">
+                                                    <i class="fas fa-pencil-alt"> </i>
+                                                </button>
+                                                <button class="btn btn-danger btn-sm" onclick="onDelete(@item.Id)">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
+                else if (botonPresionado == "Realizadas")
+                {
+                    DatoListado = "Se estan mostranto unicamente las actividades realizadas";
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered" id="tbdata" cellspacing="0" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Descripcion</th>
+                                        <th>Fecha de Creacion</th>
+                                        <th>Fecha de Finalizacion</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Where(item => item.State == 1))
+                                    {
+
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.CreationDate.ToShortDateString()</td>
+                                            <td>@item.CompletedDate?.ToShortDateString()</td>
+                                            <td>
+                                                @if (item.State == 1)
+                                                {
+                                                    <text>Completada</text>
+                                                }
+                                                else
+                                                {
+                                                    <text>Pendiente</text>
+                                                }
+                                            </td>
+
+                                            <td>
+                                                <button class="btn btn-success btn-sm" onclick="onCheck('@item.Id', '@item.Name','@item.Description','@item.CreationDate')">
+                                                    <i class="fa-sharp fa-light fa-circle-check fa-lg"></i>
+                                                </button>
+
+                                                <button class="btn btn-primary btn-sm " onclick="GetById(@item.Id)">
+                                                    <i class="fas fa-pencil-alt"> </i>
+                                                </button>
+                                                <button class="btn btn-danger btn-sm" onclick="onDelete(@item.Id)">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
+            }  
+
+            <h6 class="m-0 font-weight-bold text-blue text-center">@DatoListado</h6>
+
+          
+
+        </div>
+    </div>
+
+    <!--  Modal New TodoTask -->
+    <div class="modal fade" id="modalData" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6>Detalle de la nueva tarea </h6>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" value="0" id="txtId">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-row">
+                                    <div class="form-group col-sm-6">
+                                        <label for="txtDescripcion">Name</label>
+                                        <input type="text" class="form-control form-control-sm" id="txtName">
+                                        <label for="txtDescripcion">Descripcion</label>
+                                        <input type="text" class="form-control form-control-sm" id="txtDescription">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                    <div class="modal-footer">
+                        <button id="btnLoading" onclick="onSave()" class="btn btn-primary btn-sm" type="button">Guardar</button>
+                        <button class="btn btn-danger btn-sm" type="button" data-dismiss="modal">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--  Modal Edit TodoTask -->
+    <div class="modal fade" id="EditData" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6>Editar Tarea</h6>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" value="0" id="txtEditId">
+                        <input type="hidden" value="0" id="txtEditCreationDate">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-row">
+                                    
+                                    <div class="form-group col-sm-6">
+                                        <label for="txtEditName">Name</label>
+                                        <input type="text" class="form-control form-control-sm" id="txtEditName">
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label for="txtEditDescripcion">Descripcion</label>
+                                        <input type="text" class="form-control form-control-sm" id="txtEditDescription">
+                                    </div>
+ 
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                    <div class="modal-footer">
+                        <button id="btnLoading" onclick="onEdit()" class="btn btn-primary btn-sm" type="button">Guardar</button>
+                        <button class="btn btn-danger btn-sm" type="button" data-dismiss="modal">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<script>
+
+ 
+    function onSave() {
+        var fecha = new Date();
+
+        var json = {
+            "Name": document.getElementById('txtName').value,
+            "Description": document.getElementById('txtDescription').value,
+            "State": 0,
+            "CreationDate": fecha.toISOString()  
+        };
+
+        var options = {
+            type: "post",
+            dataType: "json",
+            url: "/System/Create",
+            data: { "data": json },
+            success: function (data) {
+                console.log(data);
+                var response = data?.data;
+                if (response != null) {
+                    if (response.success == 1) {
+                        location.href = "/System/Index";
+                        console.log("éxito");
+                                var boton = document.getElementById('MostrarTodo');
+                                boton.click();
+                    } else {
+                        console.log("error");
+                    }
+                }
+            },
+            error: function (error) {
+                console.log("Error en la solicitud AJAX:", error);
+            }
+        };
+
+        $.ajax(options);
+    }
+
+    function onDelete(data) {
+
+        Swal.fire({
+        title: "",
+        text: "¿Eliminar esta tarea?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+        })
+            .then(resultado => {
+                if (resultado.isConfirmed) {
+
+        var json = {
+            "Id": data.value
+        };
+        var options = {
+            type: "post",
+            dataType: "json",
+            url: "/System/Delete/"+data,
+            data: { "data": json },
+            success: function (data) {
+                console.log(data);
+                var response = data?.data;
+                if (response != null) {
+                    if (response.success == 1) {
+
+                        location.href = "/System/Index";
+                        console.log("exito");
+                                    var boton = document.getElementById('MostrarTodo');
+                                    boton.click();
+
+                    }
+                    else { console.log(" error"); }
+
+                }
+            }
+        }
+        $.ajax(options);
+        }});
+    }
+    function GetById(data) {
+        console.log(data)
+
+        var json = {
+            "Id": data.value
+        };
+        var options = {
+            type: "post",
+            dataType: "json",
+            url: "/System/GetById/" + data,
+            data: { "data": json },
+            success: function (data) {
+                var response = data?.data;
+                if (response != null) {
+                    if (response.success == 1) {
+
+                        $("#EditData").modal("show");
+                        document.getElementById('txtEditName').value = data.data.data.name;
+                        document.getElementById('txtEditDescription').value = data.data.data.description;
+                        document.getElementById('txtEditId').value = data.data.data.id;
+                        document.getElementById('txtEditCreationDate').value = data.data.data.creationDate;
+                        console.log(data);
+                        console.log("exito");
+
+                    }
+                    else { console.log(" error"); }
+
+                }
+            }
+        }
+        $.ajax(options);
+
+    }
+    function onEdit() {
+
+        var json = {
+            "Id": document.getElementById('txtEditId').value,
+            "Name": document.getElementById('txtEditName').value,
+            "Description": document.getElementById('txtEditDescription').value,
+            "CreationDate": document.getElementById('txtEditCreationDate').value
+            
+        };
+        var options = {
+            type: "post",
+            dataType: "json",
+            url: "/System/Edit/",
+            data: { "data": json },
+            success: function (data) {
+                console.log(data);
+                var response = data?.data;
+                if (response != null) {
+                    if (response.success == 1) {
+
+                        location.href = "/System/Index";
+                        console.log("exito");
+                                var boton = document.getElementById('MostrarTodo');
+                                boton.click();
+
+                    }
+                    else { console.log(" error"); }
+
+                }
+            }
+        }
+        $.ajax(options);
+
+    }
+    function onCheck(Id, Name, Description, CreationDate) {
+        console.log(Id);
+        console.log(Name);
+        console.log(Description);
+        console.log(CreationDate);
+        Swal.fire({
+            title: "",
+            text: "¿Marcar esta tarea como finalizada?",
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: "Sí",
+            cancelButtonText: "Aún no",
+        })
+            .then(resultado => {
+                if (resultado.isConfirmed) {
+                    var fecha = new Date();
+                    var json = {
+                        "Id": Id,
+                        "Name": Name,
+                        "Description": Description,
+                        "CreationDate": CreationDate,
+                        "State":1,
+                        "CompletedDate": fecha.toISOString()
+
+                    };
+                    var options = {
+                        type: "post",
+                        dataType: "json",
+                        url: "/System/Edit/",
+                        data: { "data": json },
+                        success: function (data) {
+                            console.log(data);
+                            var response = data?.data;
+                            if (response != null) {
+                                if (response.success == 1) {
+
+                                    location.href = "/System/Index";
+                                    console.log("exito");
+                                            var boton = document.getElementById('MostrarTodo');
+                                            boton.click();
+
+                                }
+                                else { console.log(" error"); }
+
+                            }
+                        }
+                    }
+                    $.ajax(options);
+                }
+            });
+    }
+
+</script>
+
+
+@section Scripts{
+    <script src="~/TodoTask/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/TodoTask/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/TodoTask/datatables/extensiones/js/dataTables.responsive.min.js"></script>
+    <script src="~/TodoTask/datatables/extensiones/js/dataTables.buttons.min.js"></script>
+    <script src="~/TodoTask/datatables/extensiones/js/jszip.min.js"></script>
+    <script src="~/TodoTask/datatables/extensiones/js/buttons.html5.min.js"></script>
+    <script src="~/TodoTask/datatables/extensiones/js/buttons.print.min.js"></script>
+
+    <!-- I-->
+    <script src="~/js/vistas/datatables-demo.js"></script>
+
+}
+
+
+
+

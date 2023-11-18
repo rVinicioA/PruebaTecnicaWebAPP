@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "1E3ye/dUjfDf8Cv+lFxabiTAYaoMMGQ56XRQX6q/E9S28wT9wCu7GTTp35ODsZaAwDoJSAnx5ulF9Gl1fNcDMg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vinic\\source\\repos\\PruebaTecnicaWebAPP\\PruebaTecnicaWebAPP.BussinesLogic\\PruebaTecnicaWebAPP.BussinesLogic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vinic\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

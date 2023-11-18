@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5irc2oFkoxt5C90w48LikhO08KMXAuQN4a64YHqxrchV3ck1WcxCs1QGo+KlpGcaRLubJLKBbMD3UxaJIYWtng==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vinic\\source\\repos\\PruebaTecnicaWebAPP\\PruebaTecnicaWebAPP.DataAccess\\PruebaTecnicaWebAPP.DataAccess.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vinic\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
